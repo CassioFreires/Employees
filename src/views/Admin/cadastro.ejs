@@ -1,0 +1,108 @@
+<%- include('../includes/head')%>
+    <%- include('../includes/nav')%>
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+              <%- include('../includes/message')%>
+                <div class="mt-5">
+                    <h4 class="display-6 text-center">Cadastro de funcionario</h4>
+                </div>
+                <form class="p-2" action="/admin/cadastro" method="POST">
+                  <label for="" class="mt-3 mb-1 text-secondary">Cargo </label>
+                  <select class="form-select mb-3 mt-2" aria-label="Default select example" name="cargo" required>
+                      <option value="0">Selecione o cargo do funcionario</option>
+                      <option value="ceo">CEO</option>
+                      <option value="presidente">Presidente</option>
+                      <option value="gerente">Gerente</option>
+                      <option value="supervisor">Supervisor</option>
+                      <option value="analista">Analista</option>
+                      <option value="assistente">Assistente</option>
+                      <option value="auxiliar">Auxíliar</option>
+                      <option value="estagiario">Estágiario</option>
+                    </select>
+                    <div class="mb-3">
+                      <label class="form-label text-secondary">Setor de atuação</label>
+                      <input type="text" class="form-control w-25" name="setor" maxlength='30' required>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-secondary">Salário</label>
+                      <input type="text" class="form-control w-25" name="salario" maxlength="10" required>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-secondary">Nome completo</label>
+                      <input type="text" class="form-control" name="nome" required maxlength="80">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label text-secondary">Idade</label>
+                      <input type="text" class="form-control w-25" name="idade" maxlength="2" required>
+                    </div>
+                    <div>
+                      <label class="mb-2 text-secondary">Sexo</label>
+                      <div class="form-check mt-2">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Masculino" required>
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        M
+                      </label>
+                    </div>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Feminino" required>
+                      <label class="form-check-label" for="flexRadioDefault2" >
+                        F
+                      </label>
+                    </div>
+                    <div class="mb-3 mt-3">
+                      <label class="form-label text-secondary">CEP</label>
+                      <div class="row">
+                        <div class="col">
+                          <div class="row">
+                            <div class="col-3">
+                              <input type="text" class="form-control w-100" name="cep" required maxlength="8"> 
+                            </div>
+                            <div class="col-4 ">
+                              <button class="btn btn-secondary mr-5" id="btn">buscar</button>
+                            </div>
+                          </div>
+                          <div>
+                            <div id="emailHelp" class="form-text">Não é permitido o caracter do hífen. </div>
+                          </div>
+                          <div class="alert">
+                            <p id="msg-error-cep"></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 mb-3">
+                        <label class="form-label  text-secondary">Rua</label>
+                        <input type="text" class="form-control" readonly name="rua">
+                      </div>
+                      <div class=" col-4 mb-3">
+                        <label class="form-label text-secondary">Cidade</label>
+                        <input type="text" class="form-control" readonly name="cidade">
+                      </div>
+                      <div class="col-2 mb-3 text-secondary">
+                        <label class="form-label text-secondary">N°</label>
+                        <input type="number" class="form-control w-75" name="nCasa" mix="0" max="100000" required>
+                      </div>
+                      <div class="col-2 mb-3">
+                        <label class="form-label text-secondary">Bairro</label>
+                        <input type="text" class="form-control w-100" readonly name="bairro">
+                      </div>
+                      <div class="col-2 mb-3">
+                        <label class="form-label text-secondary">UF</label>
+                        <input type="text" class="form-control w-100" readonly name="uf">
+                      </div>
+                      <div>
+                        <button type="submit" class="btn btn-dark mt-3 ">Cadastrar</button>
+                      </div>
+                    </form>
+                    </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+
+<%- include('../includes/footer')%>
+
