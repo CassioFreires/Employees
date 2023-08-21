@@ -1,0 +1,70 @@
+<%- include('../includes/head')%>
+    <%- include('../includes/nav')%>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <!-- nome, cpnj, endereco(cep. cidade, estado, bairro, numero), telefone, email -->
+                <h1 class="display-6 text-center mb-5 mt-5">Cadastre sua empresa aqui!</h1>
+
+                <form action="/admin/cadastro-empresa" method="POST" >
+                    <div class="row">
+                        <%- include('../includes/message')%>
+                        <div class="col-3">
+                            <input type="text" class="form-control " placeholder="Código" maxlength="10" title="cógido da empresa" name="codigo" required >
+                            <p class="fw-light">não pode ter menos de 10 carcteres.</p>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" class="form-control " placeholder="Nome da empresa" maxlength="100" title="Nome da empresa" name="nome" required >
+                        </div>
+                        <div class="col-4 ">
+                            <input type="text" class="form-control " placeholder="CNPJ" maxlength="18" title="CNPJ" name="cnpj" required >
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="row mt-5">
+                        <div class="col-3">
+                            <input type="text" class="form-control " placeholder="CEP" title="CEP" maxlength="9" name="cep" required>
+                        </div>
+                        <div class="col-3">
+                            <button class="btn btn-primary" id="pesquisar">Pesquisar</button>
+                        </div>
+                        <!--  -->
+                        <div class="row mt-5">
+                            <div class="col-3">
+                                <input type="text" class="form-control " placeholder="Rua" maxlength="50" title="Rua" name="rua" readonly>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control " placeholder="Cidade" maxlength="50" title="Cidade" name="cidade" readonly>
+                            </div>
+                            <div class="col-2">
+                                <input type="text" class="form-control " placeholder="Estado" maxlength="2" title="Estado" name="estado" readonly>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control " placeholder="Bairro" maxlength="50" title="Bairro" name="bairro" readonly>
+                            </div>
+                            <div class="col-1">
+                                <input type="text" class="form-control " placeholder="N°" maxlength="20" title="Número" name="numero" required>
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="mt-5">
+                            <h6 class="display-6">Contato</h6>
+                            <div class="mt-3">
+                                <input type="text" class="form-control w-25" placeholder="Telefone (+DD) " maxlength="14" title="Telefone" name="telefone" required>
+                            </div>
+                            <div class="mt-3">
+                                <input type="text" class="form-control w-25" placeholder="Celular (+DD)" maxlength="15" title="Celular" name="celular" required>
+                            </div>
+                            <div class="mt-3">
+                                <input type="email" class="form-control w-50" placeholder="E-mail" maxlength="60" title="E-mail" name="email" required>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <button class=" btn btn-success w-25 fw-bold"  id="btn">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <%- include('../includes/footer')%>

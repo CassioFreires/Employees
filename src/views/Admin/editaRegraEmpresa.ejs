@@ -1,0 +1,147 @@
+<%- include('../includes/head')%>
+    <%- include('../includes/nav')%>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <!-- nome, cpnj, endereco(cep. cidade, estado, bairro, numero), telefone, email -->
+                <form action="/admin/empresa/regra/<%= empresa._id%>" method="POST" class="mt-4">
+                    <input type="text" hidden name="id" id="id" value="<%= empresa.id%>">
+                    <h6 class="display-6">Dados pessoais</h6>
+                    <div class="row mt-3">
+                        <%- include('../includes/message')%>
+                            <div class="col-3">
+                                <input type="text" class="form-control bg-secondary-subtle" placeholder="Código"
+                                    maxlength="10" title="cógido da empresa" name="codigo" value="<%= empresa.codigo%>"
+                                    readonly>
+                                <p class="fw-light">não pode ter menos de 10 carcteres.</p>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" class="form-control bg-secondary-subtle"
+                                    placeholder="Nome da empresa" maxlength="100" title="Nome da empresa" name="nome"
+                                    value="<%= empresa.nome%>" readonly>
+                            </div>
+                            <div class="col-4 ">
+                                <input type="text" class="form-control bg-secondary-subtle" placeholder="CNPJ"
+                                    maxlength="18" title="CNPJ" name="cnpj" readonly value="<%= empresa.cnpj%>">
+                            </div>
+                    </div>
+                    <!--  -->
+                    <div class="row mt-5">
+                        <div class="col-3">
+                            <h6 class="display-6">Endereço</h6>
+                            <input type="text" class="form-control bg-secondary-subtle mt-3" placeholder="CEP"
+                                title="CEP" maxlength="9" name="cep" readonly value="<%= empresa.endereco.cep%>">
+                        </div>
+                        <!--  -->
+                        <div class="row mt-5">
+                            <div class="col-3">
+                                <input type="text" class="form-control bg-secondary-subtle" placeholder="Rua"
+                                    maxlength="50" title="Rua" name="rua" readonly value="<%= empresa.endereco.rua%>">
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control bg-secondary-subtle" placeholder="Cidade"
+                                    maxlength="50" title="Cidade" name="cidade" readonly
+                                    value="<%= empresa.endereco.cidade%>">
+                            </div>
+                            <div class="col-2">
+                                <input type="text" class="form-control bg-secondary-subtle" placeholder="Estado"
+                                    maxlength="2" title="Estado" name="estado" readonly
+                                    value="<%= empresa.endereco.estado%>">
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control bg-secondary-subtle" placeholder="Bairro"
+                                    maxlength="50" title="Bairro" name="bairro" readonly
+                                    value="<%= empresa.endereco.bairro%>">
+                            </div>
+                            <div class="col-1">
+                                <input type="text" class="form-control bg-secondary-subtle" placeholder="N°"
+                                    maxlength="20" title="Número" name="numero" required
+                                    value="<%= empresa.endereco.numero%>">
+                            </div>
+                        </div>
+                        <!--  -->
+                        <div class="mt-5">
+                            <h6 class="display-6">Contato</h6>
+                            <div class="mt-3">
+                                <input type="text" class="form-control w-25 bg-secondary-subtle"
+                                    placeholder="Telefone (+DD) " maxlength="14" title="Telefone" name="telefone"
+                                    required value="<%= empresa.contato.telefone%>">
+                            </div>
+                            <div class="mt-3">
+                                <input type="text" class="form-control w-25 bg-secondary-subtle"
+                                    placeholder="Celular (+DD)" maxlength="15" title="Celular" name="celular" required
+                                    value="<%= empresa.contato.celular%>">
+                            </div>
+                            <div class="mt-3">
+                                <input type="email" class="form-control w-50 bg-secondary-subtle" placeholder="E-mail"
+                                    maxlength="60" title="E-mail" name="email" required
+                                    value="<%= empresa.contato.email%>">
+                            </div>
+                        </div>
+                        <!-- informações dos setores da empresa -->
+                        <div class="mt-5">
+                            <div class="d-flex">
+                                <p class="fw-bold text-danger paragrafo-regras">Clique no botão abaixo para realizar as configurações das regras</p>
+                                <img class="ms-2 img-exclamation" src="/assets/img/exclamation.svg" alt="icone_exclamação" style="width: 1.5rem; height: 1.5rem;">
+
+                            </div>
+                            <div>
+                                <img class="mt-3" src="/assets/img/iconAdd.svg" alt="icone_add" style="width: 5rem; cursor: pointer;"
+                                    id="add-infor-empresa">
+                            </div>
+                        </div>
+
+                        <div id="formulario-empresa-infor" hidden class="mt-5 border rounded p-3">
+                            <div>
+                                <h4 class="text-center p-2">Regras da empresa</h4>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col-10">
+                                    <div>
+                                        <div class="d-flex area-empresa">
+                                            <input class="form-control w-50 input-area" type="text" name="areaEmpresa"
+                                                placeholder="área" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-10">
+                                    <div>
+                                        <div class="d-flex departamento-empresa">
+                                            <input class="form-control w-50 input-departamento" type="text"
+                                                name="departamentoEmpresa"
+                                                placeholder="departamento" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-10">
+                                    <div>
+                                        <div class="d-flex cargo-empresa">
+                                            <input type="text" class="form-control w-50 input-cargos"
+                                                name="cargoEmpresa" placeholder="cargo" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-10">
+                                    <div class="d-flex align-items-center cargo-empresa">
+                                        <input type="text" class="form-control w-25" name="salarioEmpresa" placeholder="salário do cargo" required>
+                                        <span class="ms-2 ">R$</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                <button class=" btn btn-success w-25 fw-bold" id="btn">Cadastrar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <%- include('../includes/footer')%>

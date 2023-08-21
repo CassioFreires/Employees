@@ -1,0 +1,29 @@
+<%- include('../includes/head')%>
+    <%- include('../includes/nav')%>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="mt-5">
+                    <h4 class="display-6">Sistema de RH</h4>
+                    <span class="text-success">Lista de empresas registradas no sistema</span>
+                    <hr>
+                    <div class="d-flex justify-content-end mb-3">
+                        <a href="/admin/cadastro-empresa"><button class="btn btn-success">Cadastrar empresa</button></a>
+                    </div>
+                </div>
+                <%- include('../includes/message')%>
+                <%if (empresas.length > 0) { %>
+                    <ul class="list-group">
+                        <% empresas.forEach((empresa) => { %>
+                            <a href="/admin/empresa/informacoes/<%= empresa._id %>" class="list-group-item list-group-item-action list-group-item-primary"><%= empresa.nome %></a>
+                       <% } ) %>
+                    </ul>
+                <% } else { %>
+                    <div class="alert alert-danger">
+                        <h5 class="text-center">Não há nehuma empresa cadastrada no sistema</h5>
+                    </div>
+                <% } %>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <%- include('../includes/footer')%>

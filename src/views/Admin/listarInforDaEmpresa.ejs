@@ -1,0 +1,45 @@
+<%- include('../includes/head')%>
+    <%- include('../includes/nav')%>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <%- include('../includes/message')%>
+
+                <% if(empresas) { %>
+                    <div class="rounded mt-2 p-4  mb-5 mt-5">
+                        <div class="d-flex justify-content-end">
+                              <nav class="navbar">
+                                <div class="container-fluid">
+                                    <a href="/admin/empresa/delete-empresa/<%= empresas._id%>">
+                                        <img src="/assets/img/closeList.svg" alt="" class="img-close">
+                                    </a>
+                                </div>
+                              </nav>
+                        </div>
+                        <div class="d-flex justify-content-start">
+                            <a href="/admin/funcionario/<%= empresas.nome%>/<%= empresas._id%>"><button class="btn btn-dark fw-bold w-100">Registrar funcionarios</button></a>
+                        </div>
+                    <div class="mt-5">
+                        <ul class="list-group mt-3">
+                            <li class="list-group-item">Razão social: <%= empresas.nome %></li>
+                            <li class="list-group-item">Código: <%= empresas.codigo%></li>
+                            <li class="list-group-item">CNPJ: <%= empresas.cnpj%></li>
+                            <li class="list-group-item">CEP: <%= empresas.endereco.cep%></li>
+                            <li class="list-group-item">Cidade: <%= empresas.endereco.cidade%></li>
+                            <li class="list-group-item">UF: <%= empresas.endereco.estado%></li>
+                            <li class="list-group-item">Bairro: <%= empresas.endereco.bairro%></li>
+                            <li class="list-group-item">Telefone: <%= empresas.contato.telefone%></li>
+                            <li class="list-group-item">Celular: <%= empresas.contato.celular%></li>
+                            <li class="list-group-item">E-mail: <%= empresas.contato.email%></li>
+                        </ul>
+                        <div class="mt-4">
+                            <a href="/admin/empresa/editar/<%= empresas._id%>"><button class="btn btn-primary fw-bold w-25">Editar</button></a>
+                            <a href="/admin/empresa/regra/<%= empresas._id%>"><button class="btn btn-success w-25 fw-bold">Criar regras da empresa</button></a>
+                            <a href="/admin/empresa/regra/filtro/<%= empresas._id%>" class="ms-4"><button class="btn btn-link">Visualizar regras</button></a>
+                        </div>
+                    </div>
+                <%}  %>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <%- include('../includes/footer')%>

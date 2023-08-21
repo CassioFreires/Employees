@@ -6,12 +6,13 @@ const middleware = require('./src/middlewares/middlewareGlobal');
 const session = require('express-session');
 const flash = require('connect-flash');
 const app = express();
+const routeApi = require('./src/routers/API/router')
 
 // porta do servidor
 const PORT = process.env.PORT || 3000;
 
 // conexão com o banco de dados
-const localhost = 'mongodb://127.0.0.1:27017/employees';
+const localhost = 'mongodb://127.0.0.1:27017/Sistema_Rh';
 mongoose.connect(localhost, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     app.emit('pronto')
@@ -22,7 +23,7 @@ mongoose.connect(localhost, {useNewUrlParser: true, useUnifiedTopology: true})
 })
 
 //config body
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}))
 app.use(express.json()); 
 
 // config pasta public
@@ -40,20 +41,14 @@ app.use(flash())
 app.set('view engine', 'ejs')
 app.set('views', './src/views');
 
-
-
-
-
-// rota principal
-app.get('/', (req, res) => {
-    res.send('pagina incial do sistema de cadastro de funcionario')
-})
-
 // middleware
 app.use(middleware.global);
 
 // rota do adm
 app.use(routeAdmin)
+
+// rota API
+app.use(routeApi);
 
 // criando o servidor http
 app.on('pronto', () => {

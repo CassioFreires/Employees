@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+textarea {
+    resize: none;
+}
+
+.img-close {
+    width: 1.5rem;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}

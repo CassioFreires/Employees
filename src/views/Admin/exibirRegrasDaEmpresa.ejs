@@ -1,0 +1,37 @@
+<%- include('../includes/head')%>
+    <%- include('../includes/nav')%>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <%- include('../includes/message')%>
+                <h5 class="mt-5 display-6 text-center">Regras da empresa</h5>
+                <hr>
+                <div class="mt-5">
+                    <form action="/admin/empresa/regras/pesquisa" method="get" class="d-flex justify-content-end">
+                        <input type="text" class="form-control" placeholder="Pesquise pela área da empresa" name="pesquisa">
+                        <button type="submit" class="btn btn-dark ms-2">Pesquisar</button>
+                    </form>
+                </div>
+                <% if(dados.length > 0) { %>
+                    <% dados.forEach((dado) => { %>
+                        <div class="card mt-5" style="width: 25rem;">
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Área: <%= dado.area%></li>
+                                    <li class="list-group-item">Departamento: <%= dado.departamento%></li>
+                                    <li class="list-group-item">Cargo: <%= dado.cargo%></li>
+                                    <li class="list-group-item">Salário: <%= dado.salario%></li>
+                                    <li class="list-group-item">Razão social: <%= dado.empresa.nome%></li>
+                                </ul>
+                            </div>
+                          </div>
+                    <% } )%>
+                <% } else { %>
+                    <div class="alert alert-danger">
+                        <h5 class="text-center"> Não há nenhuma regra registrada até o momento</h5>
+                    </div>
+                <% } %>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <%- include('../includes/footer')%>

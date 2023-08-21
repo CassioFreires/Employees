@@ -1,0 +1,250 @@
+<%- include('../includes/head')%>
+    <%- include('../includes/nav')%>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="row mt-3 mb-3">
+                <%- include('../includes/message')%>
+                    <form action="/admin/funcionario/cadastro" method="post" class="bg-dark-subtle p-4 rounded">
+                        <div class=" text-center mb-5">
+                            <h1>Registro de funcionário</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">
+                                <input type="text" class="form-control" placeholder="Nome completo" name="nomeCompleto">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <label>
+                                    <span>Data nascimento</span>
+                                    <input type="date" class="form-control mt-1" name="dataNascimento">
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="fw-bold">
+                            <div class="row">
+                                <p class="fw-normal">Sexo</p>
+                                <label>
+                                    <input type="radio" class="form-check-input" name="radioSexoDefault" value="masculino">
+                                    <span class="form-check-label">M</span>
+                                </label>
+                                <label>
+                                    <input type="radio" class="form-check-input" name="radioSexoDefault" value="femenino">
+                                    <span class="form-check-label">F</span>
+                                </label>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <div class="col-5 d-flex flex-column">
+                                <p>Estado civil</p>
+                                <label>
+                                    <input type="radio" class="form-check-input" name="radioEstadoCivilDefault" value="solteiro">
+                                    <span class="form-check-label fw-bold">Solteiro</span>
+                                </label>
+                                <label>
+                                    <input type="radio" class="form-check-input" name="radioEstadoCivilDefault" value="casado">
+                                    <span class="form-check-label fw-bold">Casado</span>
+                                </label>
+                                <label>
+                                    <input type="radio" class="form-check-input" name="radioEstadoCivilDefault" value="separado">
+                                    <span class="form-check-label fw-bold">Separado</span>
+                                </label>
+                                <label>
+                                    <input type="radio" class="form-check-input" name="radioEstadoCivilDefault" value="divorciado">
+                                    <span class="form-check-label fw-bold">Divorciado</span>
+                                </label>
+                                <label>
+                                    <input type="radio" class="form-check-input" name="radioEstadoCivilDefault" value="viúvo">
+                                    <span class="form-check-label fw-bold">Viúvo</span>
+                                </label>
+                            </div>
+                            <div class="col-5 d-flex flex-column">
+                                <p>Identificação de gênero</p>
+                                <label>
+                                    <input type="radio" class="form-check-input" name="radioIdentGenerolDefault" value="cisgênero">
+                                    <span class="form-check-label fw-bold">Cisgênero </span>
+                                </label>
+                                <label>
+                                    <input type="radio" class="form-check-input" name="radioIdentGenerolDefault" value="transgênero">
+                                    <span class="form-check-label fw-bold">Transgênero </span>
+
+                                </label>
+                                <label>
+                                    <input type="radio" class="form-check-input" name="radioIdentGenerolDefault" value="não binário">
+                                    <span class="form-check-label fw-bold">Não-binário</span>
+                                </label>
+                                <label>
+                                    <input type="radio" class="form-check-input" name="radioIdentGenerolDefault" value="gênero neutro">
+                                    <span class="form-check-label fw-bold">Gênero neutro</span>
+                                </label>
+                                <label>
+                                    <input type="radio" class="form-check-input" name="radioIdentGenerolDefault" value="prefere não dizer">
+                                    <span class="form-check-label fw-bold">Prefere não dizer</span>
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row mt-5">
+                            <h6 class="mb-4 fw-normal">Endereço</h6>
+                            <div class="col-3">
+                                <input type="text" class="form-control " placeholder="CEP" title="CEP" maxlength="9" name="cep">
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-primary" id="pesquisar">Pesquisar</button>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-3">
+                                    <input type="text" class="form-control " placeholder="Rua" maxlength="50" title="Rua" name="rua" readonly>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control " placeholder="Cidade" maxlength="50" title="Cidade" name="cidade" readonly>
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" class="form-control " placeholder="Estado" maxlength="2" title="Estado" name="estado" readonly>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control " placeholder="Bairro" maxlength="50" title="Bairro" name="bairro" readonly>
+                                </div>
+                                <div class="col-1">
+                                    <input type="text" class="form-control " placeholder="N°" maxlength="20" title="Número" name="numero">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row mt-2">
+                            <h6 class="mb-4 fw-normal">Carteira de trabalho</h6>
+                            <div class="col-3">
+                                <input type="text" class="form-control" placeholder="PIS" maxlength="10">
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control" placeholder="Número CTPS">
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control" placeholder="Série">
+                            </div>
+                            <div class="col-1">
+                                <input type="text" class="form-control" placeholder="UF">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <h6 class="mb-4 fw-normal">Identidade</h6>
+                            <div class="col-3">
+                                <input type="text" class="form-control" placeholder="CPF">
+                            </div>
+                            <div class="col-3">
+                                <label>
+                                    <input type="text" class="form-control" placeholder="RG">
+                                </label>
+                            </div>
+                            <div class="col-3">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <h6 class="mb-4 fw-normal">Titulo de eleitor</h6>
+                            <div class="col-3">
+                                <input type="text" class="form-control" placeholder="N° de inscrição">
+                            </div>
+                            <div class="col-2">
+                                <label>
+                                    <input type="text" class="form-control" placeholder="Zona">
+                                </label>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control" placeholder="Seção">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <h6 class="mb-4 fw-normal">Certificação Militar</h6>
+                            <div class="col-3">
+                                <input type="text" class="form-control" placeholder="N° Certificado militar">
+                            </div>
+                            <div class="col-4">
+                                <input type="text" class="form-control" placeholder="Naturalidade">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-3">
+                            <p>Possui CNH?</p>
+                                <div>
+                                    <label>
+                                        <input class="form-check-input" type="radio" name="radioCnhDefault" checked>
+                                        <span>Sim</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input class="form-check-input" type="radio" name="radioCnhDefault">
+                                        <span>Não</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <p>Se sim, Qual categoria?</p>
+                                <label>
+                                    <input class="form-check-input" type="radio" name="radioCnhCategoria" checked>
+                                    <span>ACC</span>
+                                </label>
+                                <label>
+                                    <input class="form-check-input ms-3" type="radio" name="radioCnhCategoria">
+                                    <span>A</span>
+                                </label>
+                                <label>
+                                    <input class="form-check-input ms-3" type="radio" name="radioCnhCategoria" >
+                                    <span>B</span>
+                                </label>
+                                <label>
+                                    <input class="form-check-input ms-3" type="radio" name="radioCnhCategoria" >
+                                    <span>C</span>
+                                </label>
+                                <label>
+                                    <input class="form-check-input ms-3" type="radio" name="radioCnhCategoria" >
+                                    <span>D</span>
+                                </label>
+                                <label>
+                                    <input class="form-check-input ms-3" type="radio" name="radioCnhCategoria" >
+                                    <span>Nenhuma</span>
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <p>Informações específicas</p>
+                            <div class="col-6">
+                                <select class="form-select"  name="cargoSelect" id="cargo-select">
+                                    <option selected>Cargo do funcionário</option>
+                                    <% if(dados.length > 0 ) { %>
+                                        <% dados.forEach((dado) => { %>
+                                            <%if(reqParamsId == dado.empresa._id) { %>
+                                                <option value="<%= dado._id%>"><%= dado.cargo%></option>
+                                            <% }%>
+                                        <%}) %>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <div class="row detalhes-select-funcionario mt-3">
+                                <div class="col-3">
+                                    <input type="text" class="form-control" placeholder="área" name="areaFuncionario">
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control" placeholder="departamento" name="departamentoFuncionario">
+                                </div>
+                                <div class="col-2">
+                                    <input type="text" class="form-control" placeholder="salário" name="salarioFuncionario">
+                                </div>
+                           </div>
+                        </div>
+                        <hr>
+                        <button type="submit" class="btn btn-success w-25 mb-2">Registrar</button>
+                    </form>
+                </div>
+                <div class="col-2"></div>
+            </div>
+            <%- include('../includes/footer')%>
