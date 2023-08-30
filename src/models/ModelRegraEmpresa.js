@@ -55,18 +55,10 @@ class RegraEmpresa {
     }
 
     async filtrarRegrasDaEmpresaPorId(idEmpresa) {
-        if(!id) {
-            console.log('Houve um erro interno pois não foi fornecido o id da empresa' + e);
-            return
-        }
-        const dados = await modelRegraEmpresa.find({
-            empresa: {
-                _id: idEmpresa
-            }
-        }).populate('empresa').sort({
-            date: -1
-        })
-        return dados
+        return await modelRegraEmpresa.find({
+            empresa: idEmpresa
+        }).populate('empresa').sort({date: -1})
+
     }
 
     async filtrarRegrasDaEmpresa() {
@@ -79,7 +71,11 @@ class RegraEmpresa {
     async pesquisarRegrasDaEmpresa(query) {
         
         const padraoRegExp = new RegExp(query, 'gi')
-        const dados = await modelRegraEmpresa.find({area: padraoRegExp}).populate('empresa').sort({date: -1})
+        const dados = await modelRegraEmpresa.find({
+            area: padraoRegExp
+        }).populate('empresa').sort({
+            date: -1
+        })
         return dados
     }
 
